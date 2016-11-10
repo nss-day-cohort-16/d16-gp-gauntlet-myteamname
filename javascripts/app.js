@@ -1,21 +1,27 @@
+"use strict";
+
+let Gauntlet = require('./player.js');
+
 /*
   Test code to generate a human player and an orc player
  */
-var warrior = new Gauntlet.Combatants.Human();
-warrior.setWeapon(new WarAxe());
-warrior.generateClass();  // This will be used for "Surprise me" option
-console.log(warrior.toString());
+// let warrior = new Gauntlet.Combatants.Human();
+// warrior.setWeapon(new WarAxe());
+// warrior.generateClass();  // This will be used for "Surprise me" option
+// console.log(warrior.toString());
 
-var orc = new Gauntlet.Combatants.Orc();
-orc.generateClass();
-orc.setWeapon(new BroadSword());
-console.log(orc.toString());
+
+// let orc = new Gauntlet.Combatants.Enemies.Orc();
+// orc.generateClass();
+// orc.setWeapon(new BroadSword());
+// console.log(orc.toString());
 
 /*
   Test code to generate a spell
  */
-var spell = new Gauntlet.SpellBook.Sphere();
-console.log("spell: ", spell.toString());
+console.log("from apps", Gauntlet.Spellbook.Sphere());
+// let spell = new Gauntlet.Spellbook.Sphere();
+// console.log("spell: ", spell.toString());
 
 
 $(document).ready(function() {
@@ -29,8 +35,8 @@ $(document).ready(function() {
     move on to the next view.
    */
   $(".card__link").click(function(e) {
-    var nextCard = $(this).attr("next");
-    var moveAlong = false;
+    let nextCard = $(this).attr("next");
+    let moveAlong = false;
 
     switch (nextCard) {
       case "card--class":
@@ -51,9 +57,11 @@ $(document).ready(function() {
     When the back button clicked, move back a view
    */
   $(".card__back").click(function(e) {
-    var previousCard = $(this).attr("previous");
+    let previousCard = $(this).attr("previous");
     $(".card").hide();
     $("." + previousCard).show();
   });
 
 });
+
+// console.log("Gauntlet", Gauntlet);
