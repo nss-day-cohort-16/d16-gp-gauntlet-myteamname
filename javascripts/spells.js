@@ -1,14 +1,14 @@
+"use strict";
+
 /*
   TODO: Modularize this code with IIFE or Browserify
  */
-var Gauntlet = Gauntlet || {};
-Gauntlet.SpellBook = {};
-
+let Spellbook = {};
 
 /*
   Base spell function that defines name, damage, damage type
  */
-Gauntlet.SpellBook.Spell = function() {
+Spellbook.Spell = function() {
   this.name = "";
   this.damage = 0;
 
@@ -17,17 +17,21 @@ Gauntlet.SpellBook.Spell = function() {
 
   this.toString = function() {
     return this.name + " of " + this.type + " for " + this.damage + " damage!";
-  }
+  };
 };
-
 /*
   An elemental sphere that can be cast by a magical class
  */
-Gauntlet.SpellBook.Sphere = function() {
-  this.name = "sphere";
+
+Spellbook.Sphere = function() {
+  console.log("this", this);
+  // this.name = "sphere";
   this.damage = Math.floor(Math.random() * 10 + 10);
 
-  var random = Math.round(Math.random() * (this.damageTypes.length - 1));
+  let random = Math.round(Math.random() * (this.damageTypes.length - 1));
   this.type = this.damageTypes[random];
 };
-Gauntlet.SpellBook.Sphere.prototype = new Gauntlet.SpellBook.Spell();
+Spellbook.Sphere.prototype = new Spellbook.Spell();
+// console.log("Spellbook", Spellbook);
+console.log("Spellbook", Spellbook);
+module.exports = Spellbook;
