@@ -20,7 +20,7 @@ let Gauntlet = require('./player.js');
 /*
   Test code to generate a spell
  */
-console.log("from apps", Gauntlet.Spellbook.Sphere());
+// console.log("from apps", Gauntlet.Spellbook.Sphere());
 // let spell = new Gauntlet.Spellbook.Sphere();
 // console.log("spell: ", spell.toString());
 
