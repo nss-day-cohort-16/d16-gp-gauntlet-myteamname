@@ -1,20 +1,20 @@
 body {
-  font-family: "Lato", "Helvetica", "sans-serif";
+  font-family: "Lato", "Helvetica",  "sans-serif";
   margin: 0;
   padding: 0px;
-  font-size: 3em; }
-
-#player-setup {
-  background: url("../images/insert-coin.gif") black;
-  background-size: 100%;
-  min-height: 1200px; }
+  font-size: 2.8em;
+  font-weight: 300;
+  background-color: black; }
 
 .title {
   color: #30f430;
-  font-size: 2em; }
+  font-size: 2em;
+  font-weight: 700;
+  padding-top: 50px;
+  opacity: 0.9; }
 
 .field {
-  margin: 20px 0 0 0; }
+  margin: 20px 0; }
 
 .field__textinput {
   font-size: 1em;
@@ -29,64 +29,122 @@ body {
 .card {
   display: none; }
 
-.card__prompt {
-  font-size: 1.1em;
-  font-weight: bold;
-  text-align: center;
-  text-transform: uppercase; }
-
-.card__button {
-  font-size: 1.1em;
-  margin: 30px 0 0 0;
-  text-align: center; }
-
 /*
   Button styles
  */
 .btn {
   text-decoration: none;
-  background-color: #30f430;
+  background-color: grey;
+  border: 0;
+  opacity: 0.75;
   color: #888;
   border-radius: 5px;
   display: inline-block;
-  margin: 10px;
-  font-size: 18px;
+  margin: 20px;
   text-transform: uppercase;
   font-weight: 600;
-  padding: 10px 5px;
-  min-width: 260px; }
-
-.btn--orange {
-  border-color: #FF4136;
-  color: white;
-  background-color: #FF4136; }
-
-.btn--blue {
-  border-color: #0074D9;
-  color: white;
-  background-color: #0074D9; }
-
-.btn--yellow {
-  border-color: #E4BD00;
-  color: white;
-  background-color: #F3C500; }
-
-.btn--green {
-  border-color: #30f430;
-  color: black;
-  background-color: #30f430; }
-
-.btn--big {
+  min-width: 260px;
   font-size: 28px;
   padding: 10px;
   font-weight: 400; }
 
-.btn--small {
-  min-width: 50px; }
+.card__back, .card__link {
+  color: black;
+  background-color: #30f430;
+  opacity: 0.8; }
 
 .btn__text {
   padding: 0 20px;
   border-radius: 0 5px 5px 0;
   color: black; }
+
+.btn__selected {
+  background-color: yellow !important; }
+
+#player-setup, #battleground, #species-select, #class-select, #weapon-select {
+  min-height: 800px; }
+
+#player-setup {
+  background: url("../images/insert-coin.gif") black;
+  padding-top: 200px;
+  background-size: 100%; }
+
+#species-select, #class-select, #weapon-select {
+  background: url("../images/fighter-black.jpg") black;
+  background-size: 100%; }
+
+.navbar {
+  opacity: .8;
+  background-color: black;
+  padding: 0;
+  margin: 0; }
+
+.navbar .btn {
+  opacity: 1;
+  margin: 15px;
+  padding: 3px;
+  font-weight: 600;
+  min-width: 270px;
+  background-color: grey; }
+
+.navbar .btn__text {
+  font-size: 1em;
+  padding: 0 10px;
+  font-weight: 400;
+  line-height: .5em; }
+
+#battleground {
+  background-size: auto 100%; }
+
+.b1 {
+  background: url("../images/backgrounds/1.gif"); }
+
+.b2 {
+  background: url("../images/backgrounds/2.gif"); }
+
+.b3 {
+  background: url("../images/backgrounds/3.gif"); }
+
+.b4 {
+  background: url("../images/backgrounds/4.gif"); }
+
+.b5 {
+  background: url("../images/backgrounds/5.gif"); }
+
+.b6 {
+  background: url("../images/backgrounds/6.gif"); }
+
+.b7 {
+  background: url("../images/backgrounds/7.gif"); }
+
+.b8 {
+  background: url("../images/backgrounds/8.gif"); }
+
+.b9 {
+  background: url("../images/backgrounds/9.gif"); }
+
+.b10 {
+  background: url("../images/backgrounds/10.gif"); }
+
+.b11 {
+  background: url("../images/backgrounds/11.gif"); }
+
+.b12 {
+  background: url("../images/backgrounds/12.gif"); }
+
+.b13 {
+  background: url("../images/backgrounds/13.gif"); }
+
+.b14 {
+  background: url("../images/backgrounds/14.gif"); }
+
+.b15 {
+  background: url("../images/backgrounds/15.gif"); }
+
+.b16 {
+  background: url("../images/backgrounds/16.gif"); }
+
+.b17 {
+  background: url("../images/backgrounds/17.gif"); }
 
 /*# sourceMappingURL=gauntlet.css.map */
