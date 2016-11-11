@@ -6,7 +6,7 @@ var fighter = function(pc, npc){
 
 // magic ? pcWeapDam = sphere.damage
 let calcMagic = (char) => {
-  return char.magical ? char.Sphere.damage : char.weapon.damage;
+  return char.magical ? char.spell.damage : char.weapon.damage;
 };
 
 // calc strMod || intMod
@@ -31,20 +31,26 @@ let critCalc = (char) => {
 let locMod = 1;
 let hitLoc = (char) => {
   let randLoc = Math.floor(Math.random() * char.limbs.length);
+  char.hitLocation = "torso";
   switch (randLoc) {
     case 0:
+      char.hitLocation = char.limbs[0];
       locMod = 2;
       break;
     case 1:
+      char.hitLocation = char.limbs[1];
       locMod = 1.5;
       break;
     case 2:
+      char.hitLocation = char.limbs[2];
       locMod = 0.75;
       break;
     case 3:
+      char.hitLocation = char.limbs[3];
       locMod = 0.75;
       break;
     case 4:
+      char.hitLocation = char.limbs[4];
       locMod = 1;
       break;
   }

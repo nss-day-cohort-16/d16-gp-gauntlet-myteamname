@@ -1,43 +1,38 @@
 "use strict";
 
-
-let Weapons = require('./weapons.js');
 let Classes = require('./classes.js');
-let Enemies = require('./enemies.js');
+let Species = require('./species.js');
+let Weapons = require('./weapons.js');
 let Spells = require('./spells.js');
 
-
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
+const Names = ["Jimmy", "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "John Pinkston", "Mr. Holmes"];
+ 
 let Gauntlet = {};
-Gauntlet.Combatants = {};
+// Gauntlet.Combatants = {};
 
-/*
-  Define the base object for any player of Gauntlet,
-  whether a human player or a monster.
- */
-Gauntlet.Combatants.Player = function(name) {
+Gauntlet.Player = function(name) {
   this.species = null;
   this.class = null;
-  this.weapon = "BUTT AXE";
+  this.weapon = "bare hands";
 
-  this.playerName = name || "unknown adventurer";
+  this.playerName = name || "Unknown Adventurer";
   this.health = Math.floor(Math.random() * 40 + 50);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
   this.strength = 90;
-  this.intelligence = 90; 
+  this.intelligence = 90;
+  this.critChance = 0.05;
+  this.critDamage = 20;
 
   this.toString = function() {
     let output = [this.playerName,
       ": a ",
       this.skinColor,
       " skinned ",
-      this.species,
+      this.species.name,
       " ",
-      this.class,
+      this.class.name,
       " with ",
       this.health,
       " health. ",
@@ -49,45 +44,71 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
-  this.weapon = newWeapon;
+Gauntlet.Player.prototype.setName = function(newName) {
+  this.playerName = newName;
 };
 
-Gauntlet.Combatants.Player.prototype.generateClass = function() {
-  // Get a random index from the allowed classes array
-  let random = Math.round(Math.random() * (this.allowedClasses.length - 1));
+Gauntlet.Player.prototype.setSpecies = function(newSpecies) {
+  this.species = new Species[newSpecies]();
+};
 
-  // Get the string at the index
-  let randomClass = this.allowedClasses[random];
-
-  // Composes the corresponding player class into the player object
-  this.class = new Classes[randomClass]();
-
-  // Add the health bonus
+Gauntlet.Player.prototype.setClass = function(newClass) {
+  this.class = new Classes[newClass]();
   this.health += this.class.healthBonus;
-  return this.class;
+  this.strength += this.class.strengthBonus;
+  this.intelligence += this.class.intelligenceBonus; 
+  this.critChance += this.class.critBonus;
 };
 
-/*
-  Define the base properties for a human in a 
-  constructor function.
- */
-Gauntlet.Combatants.Human = function() {
-  let randomSkin;
-
-  this.species = "Human";
-  this.intelligence = this.intelligence + 20;
-
-  this.skinColors.push("brown", "red", "white", "disease");
-  randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
-  this.skinColor = this.skinColors[randomSkin];
-
-  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
+Gauntlet.Player.prototype.setWeapon = function(newWeapon) {
+console.log("setWeapon this: ", this);  
+  if (this.class.magical){
+   this.weapon = new Spells.Sphere(); 
+  } else {
+   this.weapon = new Weapons[newWeapon](); 
+  }
 };
-Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
 
-Gauntlet.Combatants.Enemies = Enemies;
-Gauntlet.Spellbook = Spells.Spellbook;
-Gauntlet.Combatants.Enemies.Monster.prototype = new Gauntlet.Combatants.Player();
+// RANDOMIZER
 
-module.exports = Gauntlet ;
+Gauntlet.Player.prototype.generateClass = function() {
+  // Get a random index from the allowed classes array
+  let classes = Object.keys(Classes);
+  let randClsIndex = Math.floor(Math.random() * (classes.length));
+  return classes[randClsIndex];
+};
+
+Gauntlet.Player.prototype.generateWeapon = function() {
+  let weapons = Object.keys(Weapons);
+  console.log("weapons: ", weapons);
+  let randWepIndex = Math.floor(Math.random() * (weapons.length-1)) +1;
+  return weapons[randWepIndex];
+};
+
+Gauntlet.Player.prototype.generateName = function() {
+  let randNameIndex = Math.floor(Math.random() * (Names.length));
+  return Names[randNameIndex];
+};
+
+Gauntlet.Player.prototype.generateSpecies = function() {
+  let species = Object.keys(Species);
+  let randSpcIndex = Math.floor(Math.random() * (species.length));
+  return species[randSpcIndex];
+};
+
+console.log("Gauntlet: ", Gauntlet);
+var genericPc = new Gauntlet.Player("Bobo");
+genericPc.setSpecies("Human");
+genericPc.setClass("Shaman");
+genericPc.setWeapon("WarAxe");
+console.log("toString: ", genericPc.toString());
+
+var genNpc = new Gauntlet.Player();
+genNpc.setName(genNpc.generateName());
+genNpc.setSpecies(genNpc.generateSpecies());
+genNpc.setClass(genNpc.generateClass());
+genNpc.setWeapon(genNpc.generateWeapon());
+console.log("toString: ", genNpc.toString());
+
+
+module.exports = Gauntlet;
