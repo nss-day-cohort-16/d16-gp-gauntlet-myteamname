@@ -1,34 +1,21 @@
 "use strict";
-// gets from App.js:
-  // name
-  // species
-  // class
-  // weapon (or spell)
 
 let Classes = require('./classes.js');
 let Species = require('./species.js');
 let Weapons = require('./weapons.js');
 let Spells = require('./spells.js');
 
-// player.js needs to:
-  // set up a player
-    // calling G.Com.Player(name); returns new obj
-    // calling Class[chosenClass];
-
-// TODO: Modularize this code with IIFE or Browserify
+const Names = ["Jimmy", "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "John Pinkston", "Mr. Holmes"];
  
 let Gauntlet = {};
-Gauntlet.Combatants = {};
+// Gauntlet.Combatants = {};
 
-// Define the base object for any player of Gauntlet,
-// whether a human player or a monster.
-// Building a player  
-Gauntlet.Combatants.Player = function(name) {
+Gauntlet.Player = function(name) {
   this.species = null;
   this.class = null;
   this.weapon = "bare hands";
 
-  this.playerName = "Unknown Adventurer";
+  this.playerName = name || "Unknown Adventurer";
   this.health = Math.floor(Math.random() * 40 + 50);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
@@ -37,8 +24,6 @@ Gauntlet.Combatants.Player = function(name) {
   this.intelligence = 90;
   this.critChance = 0.05;
   this.critDamage = 20;
-
-
 
   this.toString = function() {
     let output = [this.playerName,
@@ -59,18 +44,20 @@ Gauntlet.Combatants.Player = function(name) {
   };
 };
 
-Gauntlet.Combatants.Player.prototype.setName = function(newName) {
+Gauntlet.Player.prototype.setName = function(newName) {
   // from App.js
   this.playerName = newName;
 };
 
-Gauntlet.Combatants.Player.prototype.setSpecies = (newSpecies) => {
-  this.species = Species(newSpecies);
+Gauntlet.Player.prototype.setSpecies = (newSpecies) => {
+  this.species = Species[newSpecies];
 };
 
-Gauntlet.Combatants.Player.prototype.setClass = (newClass) => {
+Gauntlet.Player.prototype.setClass = (newClass) => {
   // gets a class from classes.js
-  this.class = Classes.getClass(newClass);
+  console.log("Documentation: ", value);
+  this.class = Classes[newClass];
+  console.log("this: ", this);
   this.health += this.class.healthBonus;
   this.strength += this.class.strengthBonus;
   this.intelligence += this.class.intelligenceBonus; 
@@ -78,54 +65,47 @@ Gauntlet.Combatants.Player.prototype.setClass = (newClass) => {
   this.critDamage = this.class.critDamage;
 };
 
-Gauntlet.Combatants.Player.prototype.setWeapon = function(newWeapon) {
+Gauntlet.Player.prototype.setWeapon = function(newWeapon) {
   // this gets "Sphere" or weapon.name !!!FROM app.js!!!
-  this.weapon = Classes.getWeapon(newWeapon);
+  if (this.magical){
+   this.weapon = Spells.Sphere; 
+  } else {
+   this.weapon = Weapons[newWeapon]; 
+  }
+  // this.magical ? this.weapon = Spells.Sphere : this.weapon = Weapons[newWeapon];
 };
 
-Gauntlet.Combatants.Player.prototype.generateClass = function() {
+// RANDOMIZER
+
+Gauntlet.Player.prototype.generateClass = function() {
   // Get a random index from the allowed classes array
   let classes = Object.keys(Classes);
   let randClsIndex = Math.floor(Math.random() * (classes.length));
   return classes[randClsIndex];
 };
 
-Gauntlet.Combatants.Player.prototype.generateWeapon = function() {
+Gauntlet.Player.prototype.generateWeapon = function() {
   let weapons = Object.keys(Weapons);
   let randWepIndex = Math.floor(Math.random() * (weapons.length));
   return weapons[randWepIndex];
 };
 
-Gauntlet.Combatants.Player.prototype.generateName = function() {
-  let classes = Object.keys(Classes);
-  let randClsIndex = Math.floor(Math.random() * (classes.length));
-  return classes[randClsIndex];
+Gauntlet.Player.prototype.generateName = function() {
+  let randNameIndex = Math.floor(Math.random() * (Names.length));
+  return Names[randNameIndex];
 };
 
-Gauntlet.Combatants.Player.prototype.generateSpecies = function() {
-  let classes = Object.keys(Classes);
-  let randClsIndex = Math.floor(Math.random() * (classes.length));
-  return classes[randClsIndex];
+Gauntlet.Player.prototype.generateSpecies = function() {
+  let species = Object.keys(Species);
+  let randSpcIndex = Math.floor(Math.random() * (species.length));
+  return species[randSpcIndex];
 };
 
-  // Define the base properties for a human in a constructor function.
- 
-Gauntlet.Combatants.Human = function() {
-  let randomSkin;
-
-  this.species = "Human";
-  this.intelligence = this.intelligence + 20;
-
-  this.skinColors.push("brown", "red", "white", "disease");
-  randomSkin = Math.round(Math.random() * (this.skinColors.length-1));
-  this.skinColor = this.skinColors[randomSkin];
-
-  this.allowedClasses = ["Warrior", "Berserker", "Valkyrie", "Monk"];
-};
-Gauntlet.Combatants.Human.prototype = new Gauntlet.Combatants.Player();
-
-// Gauntlet.Combatants.Enemies = Enemies;
-// Gauntlet.Spellbook = Spells.Spellbook;
-// Gauntlet.Combatants.Enemies.Monster.prototype = new Gauntlet.Combatants.Player();
+console.log("Gauntlet: ", Gauntlet);
+var genericPc = new Gauntlet.Player("Bobo");
+genericPc.setSpecies("Human");
+genericPc.setClass("Warrior");
+genericPc.setWeapon("WarAxe");
+console.log("genericPc: ", genericPc);
 
 module.exports = Gauntlet;
