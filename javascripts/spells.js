@@ -27,16 +27,5 @@ Spells.Spellbook.Sphere = function() {
 };
 
 Spells.Spellbook.Sphere.prototype = new Spells.Spellbook.Spell();
-console.log("Spells.Spellbook", Spells.Spellbook);
-let myNewSpell1 = new Spells.Spellbook.Sphere();
-let myNewSpell2 = new Spells.Spellbook.Sphere();
-let myNewSpell3 = new Spells.Spellbook.Sphere();
-let myNewSpell4 = new Spells.Spellbook.Sphere();
-
-console.log("Spell1: ", myNewSpell1);
-console.log("Spell2: ", myNewSpell2);
-console.log("Spell3: ", myNewSpell3);
-console.log("Spell4: ", myNewSpell4);
-
 
 module.exports = Spells.Spellbook;
