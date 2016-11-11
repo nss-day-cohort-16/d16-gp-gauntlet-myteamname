@@ -2,7 +2,7 @@
 let Wep = {};
 
 Wep.Weapon = function() {
-  this.name = "magic";
+  this.name = "bare hands";
   this.damage = 1;
   this.hands = 2;
 
