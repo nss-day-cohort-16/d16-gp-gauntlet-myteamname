@@ -1,14 +1,6 @@
 "use strict";
 
 let Classes = {};
-// let Spells = require('./spells.js');
-// let Weapons = require('./weapons.js');
-let Spells = {
-  
-  };
-let Weapons = {
-  
-  };
 
 Classes.PlayerClass = function() {
   this.name = "Beggar";
@@ -17,12 +9,7 @@ Classes.PlayerClass = function() {
   this.intelligenceBonus = 0;
   this.critBonus = 0;
   this.magical = false;
-  this.spell = null;
-
-  this.toString = function() {
-  return this.name;
   };
-};
 
 /*
     FIGHTER CLASSES
@@ -159,7 +146,12 @@ Classes.Assasin = function() {
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
 };
-Classes.Assasin.prototype = new Classes.Stealth();
+Classes.Assasin.prototype = new Classes.Stealth();//   healthBonus
+//   strengthBonus
+//   intelligenceBonus
+//   critBonus
+//   magical
 
-console.log(Classes);
-// module.exports = Classes;
+
+
+module.exports = Classes;

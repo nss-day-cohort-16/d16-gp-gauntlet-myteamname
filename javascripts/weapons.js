@@ -1,7 +1,8 @@
 "use strict";
+let Wep = {};
 
-let Weapon = function() {
-  this.name = "bare hands";
+Wep.Weapon = function() {
+  this.name = "magic";
   this.damage = 1;
   this.hands = 2;
 
@@ -10,25 +11,25 @@ let Weapon = function() {
   };
 };
 
-let Dagger = function() {
+Wep.Dagger = function() {
   this.name = "dagger";
   this.damage = 4;
   this.hands = 1;
 };
-Dagger.prototype = new Weapon();
+Wep.Dagger.prototype = new Wep.Weapon();
 
-let BroadSword = function() {
+Wep.BroadSword = function() {
   this.name = "broad sword";
   this.damage = 14;
   this.hands = 2;
 };
-BroadSword.prototype = new Weapon();
+Wep.BroadSword.prototype = new Wep.Weapon();
 
-let WarAxe = function() {
+Wep.WarAxe = function() {
   this.name = "war axe";
   this.damage = 18;
   this.hands = 2;
 };
-WarAxe.prototype = new Weapon();
+Wep.WarAxe.prototype = new Wep.Weapon();
 
-module.exports = Weapon;
+module.exports = Wep;
