@@ -331,15 +331,11 @@ module.exports = Gauntlet ;
 },{"./classes.js":2,"./enemies.js":3,"./spells.js":5,"./weapons.js":6}],5:[function(require,module,exports){
 "use strict";
 
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
-let Spellbook = {};
-
-/*
-  Base spell function that defines name, damage, damage type
- */
-Spellbook.Spell = function() {
+let Spells = {};
+Spells.Spellbook = {};
+// Base spell function that defines name, damage, damage type
+ 
+Spells.Spellbook.Spell = function() {
   this.name = "";
   this.damage = 0;
 
@@ -350,22 +346,20 @@ Spellbook.Spell = function() {
     return this.name + " of " + this.type + " for " + this.damage + " damage!";
   };
 };
-/*
-  An elemental sphere that can be cast by a magical class
- */
 
-Spellbook.Sphere = function() {
-  console.log("this", this);
-  // this.name = "sphere";
+// An elemental sphere that can be cast by a magical class
+Spells.Spellbook.Sphere = function() {
+  console.log("Sphere this", this);
+  this.name = "sphere";
   this.damage = Math.floor(Math.random() * 10 + 10);
 
   let random = Math.round(Math.random() * (this.damageTypes.length - 1));
   this.type = this.damageTypes[random];
 };
-Spellbook.Sphere.prototype = new Spellbook.Spell();
-// console.log("Spellbook", Spellbook);
-console.log("Spellbook", Spellbook);
-module.exports = Spellbook;
+
+Spells.Spellbook.Sphere.prototype = new Spells.Spellbook.Spell();
+
+module.exports = Spells.Spellbook;
 },{}],6:[function(require,module,exports){
 "use strict";
 
