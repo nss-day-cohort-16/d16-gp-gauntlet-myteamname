@@ -136,7 +136,7 @@ Classes.Ninja = function() {
   this.name = "Ninja";
   this.healthBonus = this.healthBonus + 20;
   this.strengthBonus = this.strengthBonus + 10;
-  this.critBonus = 0.50;
+  this.critBonus = 0.35;
 };
 Classes.Ninja.prototype = new Classes.Stealth();
 
@@ -145,13 +145,8 @@ Classes.Assasin = function() {
   this.name = "Assasin";
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
+  this.critBonus = 0.50;
 };
-Classes.Assasin.prototype = new Classes.Stealth();//   healthBonus
-//   strengthBonus
-//   intelligenceBonus
-//   critBonus
-//   magical
-
-
+Classes.Assasin.prototype = new Classes.Stealth();
 
 module.exports = Classes;
