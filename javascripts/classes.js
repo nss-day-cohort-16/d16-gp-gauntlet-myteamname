@@ -1,22 +1,26 @@
 "use strict";
 
-/*
-  TODO: Modularize this code with IIFE or Browserify
- */
 let Classes = {};
+// let Spells = require('./spells.js');
+// let Weapons = require('./weapons.js');
+let Spells = {
+  
+  };
+let Weapons = {
+  
+  };
 
-/*
-  Base function for a player, or enemy, class (profession)
- */
 Classes.PlayerClass = function() {
   this.name = "Beggar";
   this.healthBonus = 0;
   this.strengthBonus = 0;
   this.intelligenceBonus = 0;
+  this.critBonus = 0;
   this.magical = false;
+  this.spell = null;
 
   this.toString = function() {
-    return this.name;
+  return this.name;
   };
 };
 
@@ -28,6 +32,7 @@ Classes.PlayerClass = function() {
       - Monk
  */
 Classes.Fighter = function() {
+  this.name = "Fighter";
   this.healthBonus = 20;
   this.strengthBonus = 10;
 };
@@ -74,8 +79,8 @@ Classes.Monk.prototype = new Classes.Fighter();
       - Sorcerer
  */
 Classes.Mage = function() {
-  this.name = "Mage";
   this.magical = true;
+  this.spell = "placeholder spell string";
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
@@ -124,5 +129,37 @@ Classes.Sorcerer.prototype = new Classes.Mage();
       - Ninja
       - Assassin
  */
+ Classes.Stealth = function() {
+  this.strengthBonus = -10;
+  this.critBonus = 0.35;
+};
+Classes.Stealth.prototype = new Classes.PlayerClass();
 
-module.exports = Classes;
+
+Classes.Thief = function() {
+  this.name = "Thief";
+  this.healthBonus = this.healthBonus + 25;
+  this.strengthBonus = this.strengthBonus + 30;
+  this.critBonus = 0.25;
+};
+Classes.Thief.prototype = new Classes.Stealth();
+
+
+Classes.Ninja = function() {
+  this.name = "Ninja";
+  this.healthBonus = this.healthBonus + 20;
+  this.strengthBonus = this.strengthBonus + 10;
+  this.critBonus = 0.50;
+};
+Classes.Ninja.prototype = new Classes.Stealth();
+
+
+Classes.Assasin = function() {
+  this.name = "Assasin";
+  this.healthBonus = this.healthBonus + 35;
+  this.strengthBonus = this.strengthBonus + 20;
+};
+Classes.Assasin.prototype = new Classes.Stealth();
+
+console.log(Classes);
+// module.exports = Classes;
