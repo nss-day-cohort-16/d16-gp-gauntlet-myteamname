@@ -18,7 +18,6 @@ Spells.Spellbook.Spell = function() {
 
 // An elemental sphere that can be cast by a magical class
 Spells.Spellbook.Sphere = function() {
-  console.log("Sphere this", this);
   this.name = "sphere";
   this.damage = Math.floor(Math.random() * 10 + 10);
 

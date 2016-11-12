@@ -61,7 +61,6 @@ Gauntlet.Player.prototype.setClass = function(newClass) {
 };
 
 Gauntlet.Player.prototype.setWeapon = function(newWeapon) {
-console.log("setWeapon this: ", this);  
   if (this.class.magical){
    this.weapon = new Spells.Sphere(); 
   } else {
@@ -80,7 +79,6 @@ Gauntlet.Player.prototype.generateClass = function() {
 
 Gauntlet.Player.prototype.generateWeapon = function() {
   let weapons = Object.keys(Weapons);
-  console.log("weapons: ", weapons);
   let randWepIndex = Math.floor(Math.random() * (weapons.length-1)) +1;
   return weapons[randWepIndex];
 };
@@ -92,23 +90,19 @@ Gauntlet.Player.prototype.generateName = function() {
 
 Gauntlet.Player.prototype.generateSpecies = function() {
   let species = Object.keys(Species);
-  let randSpcIndex = Math.floor(Math.random() * (species.length));
+  let randSpcIndex = Math.floor(Math.random() * (species.length-1)) +1;
   return species[randSpcIndex];
 };
 
-console.log("Gauntlet: ", Gauntlet);
 var genericPc = new Gauntlet.Player("Bobo");
 genericPc.setSpecies("Human");
 genericPc.setClass("Shaman");
 genericPc.setWeapon("WarAxe");
-console.log("toString: ", genericPc.toString());
 
 var genNpc = new Gauntlet.Player();
 genNpc.setName(genNpc.generateName());
 genNpc.setSpecies(genNpc.generateSpecies());
 genNpc.setClass(genNpc.generateClass());
 genNpc.setWeapon(genNpc.generateWeapon());
-console.log("toString: ", genNpc.toString());
-
 
 module.exports = Gauntlet;
