@@ -5,7 +5,7 @@ let Species = require('./species.js');
 let Weapons = require('./weapons.js');
 let Spells = require('./spells.js');
 
-const Names = ["Jimmy", "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "John Pinkston", "Mr. Holmes"];
+const Names = [ "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "Jack", "Mr. Holmes", "Matt", "Belve", "Nathan Majestic V, of the High Country", "Stevie"];
  
 let Gauntlet = {};
 // Gauntlet.Combatants = {};
@@ -61,7 +61,6 @@ Gauntlet.Player.prototype.setClass = function(newClass) {
 };
 
 Gauntlet.Player.prototype.setWeapon = function(newWeapon) {
-console.log("setWeapon this: ", this);  
   if (this.class.magical){
    this.weapon = new Spells.Sphere(); 
   } else {
@@ -80,8 +79,7 @@ Gauntlet.Player.prototype.generateClass = function() {
 
 Gauntlet.Player.prototype.generateWeapon = function() {
   let weapons = Object.keys(Weapons);
-  console.log("weapons: ", weapons);
-  let randWepIndex = Math.floor(Math.random() * (weapons.length-1)) +1;
+  let randWepIndex = Math.floor(Math.random() * (weapons.length));
   return weapons[randWepIndex];
 };
 
@@ -96,19 +94,18 @@ Gauntlet.Player.prototype.generateSpecies = function() {
   return species[randSpcIndex];
 };
 
-console.log("Gauntlet: ", Gauntlet);
+console.log("classes: ", Classes);
 var genericPc = new Gauntlet.Player("Bobo");
 genericPc.setSpecies("Human");
 genericPc.setClass("Shaman");
 genericPc.setWeapon("WarAxe");
-console.log("toString: ", genericPc.toString());
+console.log("genericPc: ", genericPc);
 
 var genNpc = new Gauntlet.Player();
 genNpc.setName(genNpc.generateName());
 genNpc.setSpecies(genNpc.generateSpecies());
 genNpc.setClass(genNpc.generateClass());
 genNpc.setWeapon(genNpc.generateWeapon());
-console.log("toString: ", genNpc.toString());
-
+console.log("genNpc: ", genNpc);
 
 module.exports = Gauntlet;
