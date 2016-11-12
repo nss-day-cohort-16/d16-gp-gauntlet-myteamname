@@ -91,7 +91,11 @@ $(document).ready(function() {
   $('.class__link').click(function(e) {
     $(".class__link").parent().removeClass("btn__selected");
     $(this).parent().addClass("btn__selected");
-    PC.setClass($(this).text());
+    if ($(this).text() === "Surprise Me") {
+      PC.setClass(PC.generateClass());
+    } else {
+      PC.setClass($(this).text());
+    }
   });
 
 //// Set Weapon
