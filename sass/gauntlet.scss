@@ -31,6 +31,7 @@ body {
   color: black;
 }
 
+
 /*
   Section styles
  */
@@ -53,9 +54,9 @@ body {
   margin: 20px;
   text-transform: uppercase;
   font-weight: 600;
-  min-width: 260px;
+  min-width: 280px;
   font-size: 28px;
-  padding: 10px;
+  padding: 10px 0;
   font-weight: 400;
 }
 
@@ -67,9 +68,10 @@ body {
 }
 
 .btn__text {
-  padding: 0 20px;
+  padding: 20px 55px;
   border-radius: 0 5px 5px 0;
   color: black;
+  width: 100%;
 }
 
 .btn__selected {

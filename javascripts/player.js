@@ -37,7 +37,7 @@ Gauntlet.Player = function(name) {
       this.health,
       " health. ",
       (this.class.magical) ? "Able to cast " : " Wielding a ",
-      this.weapon.toString(),
+      this.weapon.name,
       "!"
     ].join("");
     return output;
