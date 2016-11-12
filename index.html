@@ -135,7 +135,7 @@
 
               <div class="col-sm-4">
                 <div class="card__button">
-                  <a class="class__link btn btn__selected" href="#">
+                  <a class="class__link btn" href="#">
                     <span class="class__link btn__text">Wizard</span>
                   </a>
                 </div>
@@ -316,17 +316,77 @@
           </div>
       </nav>
 
+
       <div class="row">
-        <div class="col-sm-12 text-center">
+        <div class="col-sm-12 text-center" id="fight-status">
 
-          <div class="title">FIGHT!</div>
+          <!-- Fight Status and Fight button area -->
+          <div class="card__button">
+            <a class="card__link btn btn__attack"
+               id="attack"
+               href="#">
+              <span class="btn__text title">Attack</span>
+            </a>
+          </div>
 
-
-
-
+          <!-- <div class="title"></div> -->
 
         </div>
       </div>
+
+      <div class="row stats-row">
+
+        <!-- PC -->
+        <div class="col-sm-6">
+          <div class="row" id="pc-overview">
+            <!-- PC String Text -->
+
+          </div>
+          <div class="row">
+            <div class="col-sm-6">
+              <div class="row" id="pc-stats">
+              <!-- PC Stats -->
+              </div>
+              <div class="row" id="pc-health">
+              <!-- PC Health -->
+              </div>
+            </div>
+            <div class="col-sm-6" id="pc-image">
+              <!-- PC Image -->
+            </div>
+          </div>
+        </div>
+
+        <!-- NPC Stats -->
+        <div class="col-sm-6">
+          <div class="row text-right" id="npc-overview">
+            <!-- NPC String Text -->
+          </div>
+
+          <div class="row">
+
+            <div class="col-sm-6" id="npc-image">
+            <!-- NPC Image -->
+            </div>
+
+            <div class="col-sm-6">
+              <div class="row" id="npc-stats">
+              <!-- NPC Stats -->
+              </div>
+
+              <div class="row" id="npc-health">
+              <!-- NPC Health -->
+              </div>
+            </div>
+
+
+          </div>
+
+        </div>
+
+
+      </div>
+
     </section>
 
   </article>

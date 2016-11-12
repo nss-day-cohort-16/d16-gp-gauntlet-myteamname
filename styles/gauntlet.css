@@ -1,10 +1,10 @@
 body {
   font-family: "Lato", "Helvetica",  "sans-serif";
   margin: 0;
-  padding: 0px;
+  padding: 0;
   font-size: 2.8em;
   font-weight: 300;
-  background-color: black; }
+  color: white; }
 
 .title {
   color: #30f430;
@@ -14,14 +14,16 @@ body {
   opacity: 0.9; }
 
 .field {
-  margin: 20px 0; }
+  margin: 20px 0;
+  color: black; }
 
 .field__textinput {
   font-size: 1em;
   padding: 15px 0;
   text-align: center;
   min-width: 500px;
-  border-radius: 20px 0; }
+  border-radius: 20px 0;
+  color: black; }
 
 /*
   Section styles
@@ -72,6 +74,13 @@ body {
 #species-select, #class-select, #weapon-select {
   background: url("../images/fighter-black.jpg") black;
   background-size: 100%; }
+
+.btn__attack {
+  border-radius: 20px; }
+
+.btn__attack:active {
+  background-color: red;
+  opacity: 1; }
 
 .navbar {
   opacity: .8;
@@ -146,5 +155,47 @@ body {
 
 .b17 {
   background: url("../images/backgrounds/17.gif"); }
+
+#fight-status {
+  height: 100px; }
+
+.stats-row {
+  height: 100%; }
+
+#pc-overview, #npc-overview {
+  padding: 50px;
+  text-shadow: 0px 0px 2px black;
+  text-shadow: 0px 0px 10px black;
+  height: 100px; }
+
+#pc-stats, #npc-stats {
+  height: 300px;
+  padding: 50px; }
+
+#pc-health, #npc-health {
+  padding: 10px 10px 10px 50px;
+  background-color: #30f430;
+  opacity: .75;
+  font-size: 2em;
+  color: black; }
+
+#pc-health {
+  border-radius: 0 20px 20px 0; }
+
+#npc-health {
+  border-radius: 20px 0 0 20px; }
+
+#pc-image img, #npc-image img {
+  height: 400px;
+  margin-top: 100px;
+  margin-left: 50px; }
+
+#npc-image img {
+  -moz-transform: scaleX(-1);
+  -o-transform: scaleX(-1);
+  -webkit-transform: scaleX(-1);
+  transform: scaleX(-1);
+  filter: FlipH;
+  -ms-filter: "FlipH"; }
 
 /*# sourceMappingURL=gauntlet.css.map */
