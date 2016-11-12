@@ -141,12 +141,12 @@ Classes.Ninja = function() {
 Classes.Ninja.prototype = new Stealth();
 
 
-Classes.Assasin = function() {
-  this.name = "Assasin";
+Classes.Assassin = function() {
+  this.name = "Assassin";
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
   this.critBonus = 0.50;
 };
-Classes.Assasin.prototype = new Stealth();
+Classes.Assassin.prototype = new Stealth();
 
 module.exports = Classes;
