@@ -4,7 +4,6 @@ let Gauntlet = require('./player.js');
 let Battleground = require('./battleground.js');
 var PC;
 var NPC;
-var tempName;
 var tempSpecies;
 var tempClass;
 var tempWeapon;
@@ -39,10 +38,8 @@ $(document).ready(function() {
 
 
   $(".card__link").click(function(e) {
-    console.log($(event.target).text());
     if ($(event.target).text() === 'INSERT COIN') {
-      submitName($('#player-name').text());
-      console.log("submittin the namez");
+      submitName($('#player-name').val());
     }
       let nextCard = $(this).attr("next");
       let moveAlong = false;
@@ -55,7 +52,8 @@ $(document).ready(function() {
           moveAlong = ($("#player-name").val() !== "");
           break;
         case "card--battleground":
-          moveAlong = ($("#player-name").val() !== "");
+          createFighters();
+          // moveAlong = ($("#player-name").val() !== "");
           break;
         case "card--species":
           moveAlong = ($("#player-name").val() !== "");
@@ -68,50 +66,44 @@ $(document).ready(function() {
     }
   });
 
-//// Set name
-
+//// KeyUp
   $(document).keyup( e => {
   if (e.keyCode === 13) {
-    submitName();
+    submitName($('#player-name').val());
     nextCard();
     }
   });
 
-//// Set species
+//// Set Name
+  function submitName(name) {
+    console.log("name", name);
+    PC = new Gauntlet.Player(name);
+    console.log("PC", PC);
+  }
+
+//// Set Species
   $('.species__link').click(function(e) {
     $(".species__link").parent().removeClass("btn__selected");
     $(this).parent().addClass("btn__selected");
-    tempSpecies = $(this).text();
+    PC.setSpecies($(this).text());
   });
 
 
-//// Set class
+//// Set Class
   $('.class__link').click(function(e) {
     $(".class__link").parent().removeClass("btn__selected");
     $(this).parent().addClass("btn__selected");
-    tempClass = $(this).text();
-    console.log(tempClass);
+    PC.setClass($(this).text());
   });
 
-  $('.class__link').click(function(e) {
-    if ($(this).html() === 'Surprise Me') {
-      console.log("Surprise Me");
-    } else {
-    console.log($(this).html().toLowerCase());
-    }
-  });
-
-//// Set weapon
+//// Set Weapon
   $('.weapon__link').click(function(e) {
-    $(".class__link").parent().removeClass("btn__selected");
+    $(".weapon__link").parent().removeClass("btn__selected");
     $(this).parent().addClass("btn__selected");
-    tempClass = $(this).text();
-    console.log(tempClass);
+    PC.setWeapon($(this).text());
   });
 
-
-  // On "Enter" press OR "Submit" click, invoke function to trigger next page/card
-  /// User input field must be true
+  // On "Enter" press, invoke function to trigger next page/card
 
   function nextCard() {
     let nextCard = $("a").attr("next");
@@ -125,7 +117,8 @@ $(document).ready(function() {
         moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--battleground":
-        moveAlong = ($("#player-name").val() !== "");
+        createFighters();
+        // moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
@@ -138,10 +131,6 @@ $(document).ready(function() {
     }
   }
 
-  function submitName(name) {
-    var genericPc = new Gauntlet.Player(name);
-    console.log(genericPc);
-  }
 
   /*
     When the back button clicked, move back a view
@@ -152,6 +141,15 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
-});
+ function createFighters() {
+    console.log("PC: ", PC);
 
-// console.log("Gauntlet", Gauntlet);
+    var NPC = new Gauntlet.Player();
+    NPC.setName(NPC.generateName());
+    NPC.setSpecies(NPC.generateSpecies());
+    NPC.setClass(NPC.generateClass());
+    NPC.setWeapon(NPC.generateWeapon());
+    console.log("NPC: ", NPC);
+ }
+
+});
