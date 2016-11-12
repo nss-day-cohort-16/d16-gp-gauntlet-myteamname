@@ -2,7 +2,7 @@
 
 let Classes = {};
 
-Classes.PlayerClass = function() {
+let PlayerClass = function() {
   this.name = "Beggar";
   this.healthBonus = 0;
   this.strengthBonus = 0;
@@ -18,12 +18,12 @@ Classes.PlayerClass = function() {
       - Berserker
       - Monk
  */
-Classes.Fighter = function() {
+let Fighter = function() {
   this.name = "Fighter";
   this.healthBonus = 20;
   this.strengthBonus = 10;
 };
-Classes.Fighter.prototype = new Classes.PlayerClass();
+Fighter.prototype = new PlayerClass();
 
 
 Classes.Warrior = function() {
@@ -31,7 +31,7 @@ Classes.Warrior = function() {
   this.healthBonus = this.healthBonus + 25;
   this.strengthBonus = this.strengthBonus + 30;
 };
-Classes.Warrior.prototype = new Classes.Fighter();
+Classes.Warrior.prototype = new Fighter();
 
 
 Classes.Valkyrie = function() {
@@ -39,7 +39,7 @@ Classes.Valkyrie = function() {
   this.healthBonus = this.healthBonus + 20;
   this.strengthBonus = this.strengthBonus + 10;
 };
-Classes.Valkyrie.prototype = new Classes.Fighter();
+Classes.Valkyrie.prototype = new Fighter();
 
 
 Classes.Berserker = function() {
@@ -47,7 +47,7 @@ Classes.Berserker = function() {
   this.healthBonus = this.healthBonus + 35;
   this.strengthBonus = this.strengthBonus + 20;
 };
-Classes.Berserker.prototype = new Classes.Fighter();
+Classes.Berserker.prototype = new Fighter();
 
 
 Classes.Monk = function() {
@@ -55,7 +55,7 @@ Classes.Monk = function() {
   this.healthBonus = this.healthBonus + 10;
   this.strengthBonus = this.strengthBonus + 40;
 };
-Classes.Monk.prototype = new Classes.Fighter();
+Classes.Monk.prototype = new Fighter();
 
 
 /*
@@ -65,14 +65,14 @@ Classes.Monk.prototype = new Classes.Fighter();
       - Conujurer
       - Sorcerer
  */
-Classes.Mage = function() {
+let Mage = function() {
   this.magical = true;
   this.spell = "placeholder spell string";
   this.healthBonus = this.healthBonus - 10;
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 20;
 };
-Classes.Mage.prototype = new Classes.PlayerClass();
+Mage.prototype = new PlayerClass();
 
 
 Classes.Shaman = function() {
@@ -81,7 +81,7 @@ Classes.Shaman = function() {
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 20;
 };
-Classes.Shaman.prototype = new Classes.Mage();
+Classes.Shaman.prototype = new Mage();
 
 
 Classes.Wizard = function() {
@@ -90,7 +90,7 @@ Classes.Wizard = function() {
   this.strengthBonus = this.strengthBonus - 25;
   this.intelligenceBonus = this.intelligenceBonus + 40;
 };
-Classes.Wizard.prototype = new Classes.Mage();
+Classes.Wizard.prototype = new Mage();
 
 
 Classes.Conjurer = function() {
@@ -98,7 +98,7 @@ Classes.Conjurer = function() {
   this.strengthBonus = this.strengthBonus - 10;
   this.intelligenceBonus = this.intelligenceBonus + 10;
 };
-Classes.Conjurer.prototype = new Classes.Mage();
+Classes.Conjurer.prototype = new Mage();
 
 
 Classes.Sorcerer = function() {
@@ -107,7 +107,7 @@ Classes.Sorcerer = function() {
   this.strengthBonus = this.strengthBonus - 20;
   this.intelligenceBonus = this.intelligenceBonus + 30;
 };
-Classes.Sorcerer.prototype = new Classes.Mage();
+Classes.Sorcerer.prototype = new Mage();
 
 
 /*
@@ -116,11 +116,11 @@ Classes.Sorcerer.prototype = new Classes.Mage();
       - Ninja
       - Assassin
  */
- Classes.Stealth = function() {
+ let Stealth = function() {
   this.strengthBonus = -10;
   this.critBonus = 0.35;
 };
-Classes.Stealth.prototype = new Classes.PlayerClass();
+Stealth.prototype = new PlayerClass();
 
 
 Classes.Thief = function() {
@@ -129,7 +129,7 @@ Classes.Thief = function() {
   this.strengthBonus = this.strengthBonus + 30;
   this.critBonus = 0.25;
 };
-Classes.Thief.prototype = new Classes.Stealth();
+Classes.Thief.prototype = new Stealth();
 
 
 Classes.Ninja = function() {
@@ -138,7 +138,7 @@ Classes.Ninja = function() {
   this.strengthBonus = this.strengthBonus + 10;
   this.critBonus = 0.35;
 };
-Classes.Ninja.prototype = new Classes.Stealth();
+Classes.Ninja.prototype = new Stealth();
 
 
 Classes.Assasin = function() {
@@ -147,6 +147,6 @@ Classes.Assasin = function() {
   this.strengthBonus = this.strengthBonus + 20;
   this.critBonus = 0.50;
 };
-Classes.Assasin.prototype = new Classes.Stealth();
+Classes.Assasin.prototype = new Stealth();
 
 module.exports = Classes;
