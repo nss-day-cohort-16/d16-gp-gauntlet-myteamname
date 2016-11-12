@@ -4,9 +4,7 @@ let Gauntlet = require('./player.js');
 let Battleground = require('./battleground.js');
 var PC;
 var NPC;
-var tempSpecies;
-var tempClass;
-var tempWeapon;
+
 
 /*
   Test code to generate a human player and an orc player
@@ -53,7 +51,7 @@ $(document).ready(function() {
           break;
         case "card--battleground":
           createFighters();
-          // moveAlong = ($("#player-name").val() !== "");
+          moveAlong = ($("#player-name").val() !== "");
           break;
         case "card--species":
           moveAlong = ($("#player-name").val() !== "");
@@ -67,7 +65,7 @@ $(document).ready(function() {
   });
 
 //// KeyUp
-  $(document).keyup( e => {
+  $('#player-name').keyup( e => {
   if (e.keyCode === 13) {
     submitName($('#player-name').val());
     nextCard();
@@ -118,7 +116,7 @@ $(document).ready(function() {
         break;
       case "card--battleground":
         createFighters();
-        // moveAlong = ($("#player-name").val() !== "");
+        moveAlong = ($("#player-name").val() !== "");
         break;
       case "card--species":
         moveAlong = ($("#player-name").val() !== "");
@@ -141,15 +139,18 @@ $(document).ready(function() {
     $("." + previousCard).show();
   });
 
- function createFighters() {
-    console.log("PC: ", PC);
+  $("#newCharacter").click(function(e) {
+    location.reload();
+  });
 
-    var NPC = new Gauntlet.Player();
+ function createFighters() {
+    NPC = new Gauntlet.Player();
     NPC.setName(NPC.generateName());
     NPC.setSpecies(NPC.generateSpecies());
     NPC.setClass(NPC.generateClass());
     NPC.setWeapon(NPC.generateWeapon());
-    console.log("NPC: ", NPC);
+    Battleground([PC, NPC]);
+    console.log("Battleground", Battleground);
  }
 
 });
