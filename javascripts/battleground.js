@@ -1,7 +1,6 @@
 "use strict";
 
 let newStats = require('./fighter.js');
-
 let currentPlayer = [];
 
 // Draw random location and allow player to set new location
@@ -24,93 +23,92 @@ function randomizeLocation() {
   $( "#battleground" ).addClass( "b" + num );
 }
 
+// Uncomment all this to test the fightFunction with two test objects
 
-let fakePc = {
-  class: {
-    healthBonus: -5,
-    intelligenceBonus: 40,
-    name: "warrior",
-    strengthBonus: -30
-  },
-  critChance: 0.05,
-  critDamage: 20,
-  health: 47,
-  intelligence: 130,
-  limbs: ["head", "neck", "arm", "leg", "torso"],
-  playerName: "Bobo",
-  skinColor: "grey",
-  skinColors: ["grey"],
-  species: {name: "human"},
-  strength: 60,
-  toString: function(){
-    let output = [this.playerName,
-      ": a ",
-      this.skinColor,
-      " skinned ",
-      this.species.name,
-      " ",
-      this.class.name,
-      " with ",
-      this.health,
-      " health. ",
-      (this.class.magical) ? "Able to cast " : " Wielding a ",
-      this.weapon.toString(),
-      "!"
-    ].join("");
-    return output;
-  },
-  weapon: {
-    damage: 14,
-    name: "sphere",
-    type: "water"
-  }
-};
+// let fakePc = {
+//   class: {
+//     healthBonus: -5,
+//     intelligenceBonus: 40,
+//     name: "ninja",
+//     strengthBonus: -30
+//   },
+//   critChance: 0.05,
+//   critDamage: 20,
+//   health: 47,
+//   intelligence: 130,
+//   limbs: ["head", "neck", "arm", "leg", "torso"],
+//   playerName: "Bobo",
+//   skinColor: "grey",
+//   skinColors: ["grey"],
+//   species: {name: "human"},
+//   strength: 60,
+//   toString: function(){
+//     let output = [this.playerName,
+//       ": a ",
+//       this.skinColor,
+//       " skinned ",
+//       this.species.name,
+//       " ",
+//       this.class.name,
+//       " with ",
+//       this.health,
+//       " health. ",
+//       (this.class.magical) ? "Able to cast " : " Wielding a ",
+//       this.weapon.name,
+//       "!"
+//     ].join("");
+//     return output;
+//   },
+//   weapon: {
+//     damage: 14,
+//     name: "sphere",
+//     type: "water"
+//   }
+// };
 
-let fakeNpc = {
-  class: {
-    healthBonus: 55,
-    name: "monk",
-    strengthBonus: 30
-  },
-  critChance: 0.05,
-  critDamage: 20,
-  health: 143,
-  intelligence: 90,
-  limbs: ["head", "neck", "arm", "leg", "torso"],
-  playerName: "Ned Nederlander",
-  skinColor: "grey",
-  skinColors: ["grey"],
-  species: {name: "human"},
-  strength: 120,
-  toString: function(){
-    let output = [this.playerName,
-      ": a ",
-      this.skinColor,
-      " skinned ",
-      this.species.name,
-      " ",
-      this.class.name,
-      " with ",
-      this.health,
-      " health. ",
-      (this.class.magical) ? "Able to cast " : " Wielding a ",
-      this.weapon.toString(),
-      "!"
-    ].join("");
-    return output;
-  },
-  weapon: {
-    damage: 18,
-    name: "war axe",
-    hands: 2
-  }
-};
-// Inject initial data into the dom
+// let fakeNpc = {
+//   class: {
+//     healthBonus: 55,
+//     name: "thief",
+//     strengthBonus: 30
+//   },
+//   critChance: 0.05,
+//   critDamage: 20,
+//   health: 143,
+//   intelligence: 90,
+//   limbs: ["head", "neck", "arm", "leg", "torso"],
+//   playerName: "Ned Nederlander",
+//   skinColor: "grey",
+//   skinColors: ["grey"],
+//   species: {name: "human"},
+//   strength: 120,
+//   toString: function(){
+//     let output = [this.playerName,
+//       ": a ",
+//       this.skinColor,
+//       " skinned ",
+//       this.species.name,
+//       " ",
+//       this.class.name,
+//       " with ",
+//       this.health,
+//       " health. ",
+//       (this.class.magical) ? "Able to cast " : " Wielding a ",
+//       this.weapon.name,
+//       "!"
+//     ].join("");
+//     return output;
+//   },
+//   weapon: {
+//     damage: 18,
+//     name: "war axe",
+//     hands: 2
+//   }
+// };
 
-let testArray = [fakePc, fakeNpc];
-console.log(testArray);
+// let testArray = [fakePc, fakeNpc];
 
-function fight(array) {
+let fightFuntion = function fight(array) {
 
   // Store current state of player
   currentPlayer = array;
@@ -125,8 +123,7 @@ function fight(array) {
   $("#npc-health").html(`Health: ${array[1].health}`);
   $("#npc-image").html(`<img src="images/fighters/${array[1].class.name}-stand.gif">`);
 
-  // If a zero, print results. break.
-
+  // If someone has zero health, show the results of the fight
   if ( array[0].health === 0 || array[1].health === 0 ) {
     if ( array[0].health === 0) {
       $("#fight-status").html("<div class='title'>You Lost!</div>");
@@ -134,33 +131,16 @@ function fight(array) {
       $("#fight-status").html("<div class='title'>You Win!</div>");
     }
   }
+};
 
-  // If not zero call fight and get modified object and run fight again with new objects
-
-}
-
-// Animation to be triggered when user clicks attack button
+// Fighter.js is called each time the attack button is pressed
 $("#attack").click( () => {
-  console.log("you clicked the attack button");
-  console.log("currentPlayer", currentPlayer);
   let newArray = newStats(currentPlayer[0], currentPlayer[1]);
-  fight(newArray);
+  fightFuntion(newArray);
 });
 
-fight(testArray);
+// Run this function to test the fightFunction. This should be called in app.js and passed an array of the two players as the argument. argument is [pc, npc]
 
+// fightFuntion(testArray);
 
-
-// Build will call one of my functions and pass me two objects
-
-// Battleground:
-// 1. Randomize background based on streetfighter
-// 2. Show two figther images and health bar
-// 3. Show descriptions for each
-// 4. listen for attack button press
-// 5. When press call fighter
-// 6. based on new results, draw new page and display winner/loser if applicable.
-
-// I will call a fighter function and pass two parameters(object of PC, object of NPC) and it will return an array of the two modified objects.
-
-//export printPage function
+module.exports = fightFuntion;
