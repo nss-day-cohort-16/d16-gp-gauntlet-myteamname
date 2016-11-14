@@ -8,7 +8,6 @@ let Spells = require('./spells.js');
 const Names = [ "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "Jack", "Mr. Holmes", "Matt", "Belve", "Nathan Majestic V, of the High Country", "Stevie"];
  
 let Gauntlet = {};
-// Gauntlet.Combatants = {};
 
 Gauntlet.Player = function(name) {
   this.species = null;
@@ -94,18 +93,6 @@ Gauntlet.Player.prototype.generateSpecies = function() {
   return species[randSpcIndex];
 };
 
-console.log("classes: ", Classes);
-var genericPc = new Gauntlet.Player("Bobo");
-genericPc.setSpecies("Human");
-genericPc.setClass("Shaman");
-genericPc.setWeapon("WarAxe");
-console.log("genericPc: ", genericPc);
 
-var genNpc = new Gauntlet.Player();
-genNpc.setName(genNpc.generateName());
-genNpc.setSpecies(genNpc.generateSpecies());
-genNpc.setClass(genNpc.generateClass());
-genNpc.setWeapon(genNpc.generateWeapon());
-console.log("genNpc: ", genNpc);
 
 module.exports = Gauntlet;

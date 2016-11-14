@@ -5,33 +5,8 @@ let Battleground = require('./battleground.js');
 var PC;
 var NPC;
 
-
-/*
-  Test code to generate a human player and an orc player
- */
-// let user = new Gauntlet.Combatants.Human();
-// user.setWeapon(new WarAxe());
-// user.setName($("#player-name").val());
-// user.generateClass();  // This will be used for "Surprise me" option
-// console.log(user.toString());
-
-// let orc = new Gauntlet.Combatants.Enemies.Orc();
-// orc.generateClass();
-// orc.setWeapon(new BroadSword());
-// console.log(orc.toString());
-
-/*
-  Test code to generate a spell
- */
-// console.log("from apps", Gauntlet.Spellbook.Sphere());
-// let spell = new Gauntlet.Spellbook.Sphere();
-// console.log("spell: ", spell.toString());
-
-
 $(document).ready(function() {
-  /*
-    Show the initial view that accepts player name
-   */
+  
   $("#player-setup").show();
 
 
@@ -135,7 +110,6 @@ $(document).ready(function() {
     }
   }
 
-
   /*
     When the back button clicked, move back a view
    */
@@ -156,7 +130,6 @@ $(document).ready(function() {
     NPC.setClass(NPC.generateClass());
     NPC.setWeapon(NPC.generateWeapon());
     Battleground([PC, NPC]);
-    console.log("Battleground", Battleground);
  }
 
 });
