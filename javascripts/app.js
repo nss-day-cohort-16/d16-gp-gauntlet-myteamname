@@ -61,9 +61,7 @@ $(document).ready(function() {
   if (moveAlong) {
       $(".card").hide();
       $("." + nextCard).show();
-    } else { 
-      alert("You must have name.");
-    }
+    } 
   });
 
 //// KeyUp
@@ -76,9 +74,11 @@ $(document).ready(function() {
 
 //// Set Name
   function submitName(name) {
-    console.log("name", name);
+    if (name === "") {
+      alert("Please write in your name!");
+    } else {
     PC = new Gauntlet.Player(name);
-    console.log("PC", PC);
+    }
   }
 
 //// Set Species
