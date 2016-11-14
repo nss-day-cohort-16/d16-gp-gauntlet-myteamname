@@ -61,6 +61,8 @@ $(document).ready(function() {
   if (moveAlong) {
       $(".card").hide();
       $("." + nextCard).show();
+    } else { 
+      alert("You must have name.");
     }
   });
 
