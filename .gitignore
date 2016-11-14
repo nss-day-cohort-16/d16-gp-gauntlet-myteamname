@@ -3,3 +3,4 @@
 *.sass-cache
 *.css.map
 lib/node_modules
+dist/gauntlet.js
