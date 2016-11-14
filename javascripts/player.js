@@ -6,7 +6,7 @@ let Weapons = require('./weapons.js');
 let Spells = require('./spells.js');
 
 const Names = [ "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "Jack", "Mr. Holmes", "Matt", "Belve", "Nathan Majestic V, of the High Country", "Stevie"];
- 
+
 let Gauntlet = {};
 
 Gauntlet.Player = function(name) {
@@ -15,7 +15,7 @@ Gauntlet.Player = function(name) {
   this.weapon = "bare hands";
 
   this.playerName = name || "Unknown Adventurer";
-  this.health = Math.floor(Math.random() * 40 + 50);
+  this.health = Math.floor(Math.random() * 40 + 100);
   this.limbs = ["head", "neck", "arm", "leg", "torso"];
   this.skinColor = "gray";
   this.skinColors = [this.skinColor];
@@ -55,15 +55,15 @@ Gauntlet.Player.prototype.setClass = function(newClass) {
   this.class = new Classes[newClass]();
   this.health += this.class.healthBonus;
   this.strength += this.class.strengthBonus;
-  this.intelligence += this.class.intelligenceBonus; 
+  this.intelligence += this.class.intelligenceBonus;
   this.critChance += this.class.critBonus;
 };
 
 Gauntlet.Player.prototype.setWeapon = function(newWeapon) {
   if (this.class.magical){
-   this.weapon = new Spells.Sphere(); 
+   this.weapon = new Spells.Sphere();
   } else {
-   this.weapon = new Weapons[newWeapon](); 
+   this.weapon = new Weapons[newWeapon]();
   }
 };
 
