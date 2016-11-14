@@ -1,6 +1,7 @@
 "use strict";
 
 let newStats = require('./fighter.js');
+let rotCounter = 0;
 
 let currentPlayer  = [],
     battlegroundEl = $("#battleground"),
@@ -52,8 +53,11 @@ let fightFuntion = function fight(array) {
   if ( array[0].health === 0 || array[1].health === 0 ) {
     if ( array[0].health === 0) {
       fightStatusEl.html("<div class='title'>You Lost!</div>");
+      deathAnimationPC();
+      
     } else if (array[1].health === 0) {
       fightStatusEl.html("<div class='title'>You Win!</div>");
+      deathAnimationNPC();
     }
   }
 };
@@ -69,6 +73,16 @@ attackEl.click( () => {
 function runNewData() {
   let newArray = newStats(currentPlayer[0], currentPlayer[1]);
   fightFuntion(newArray);
+}
+
+function deathAnimationPC() {
+    $(pcImageEl).css({'transform' : 'rotate(-75deg)'});
+    $(pcImageEl).fadeToggle(1500, "linear");
+}
+
+function deathAnimationNPC() {
+    $(npcImageEl).css({'transform' : 'rotate(75deg)'});
+    $(npcImageEl).fadeToggle(1500, "linear");
 }
 
 module.exports = fightFuntion;
