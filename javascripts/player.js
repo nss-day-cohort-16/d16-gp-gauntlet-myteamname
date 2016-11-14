@@ -8,7 +8,6 @@ let Spells = require('./spells.js');
 const Names = [ "Thoror", "Hlundig", "Breuskie", "Ned Nederlander", "Lucky Day", "Dusty Bottoms", "Jack", "Mr. Holmes", "Matt", "Belve", "Nathan Majestic V, of the High Country", "Stevie"];
  
 let Gauntlet = {};
-// Gauntlet.Combatants = {};
 
 Gauntlet.Player = function(name) {
   this.species = null;

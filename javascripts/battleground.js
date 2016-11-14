@@ -23,91 +23,6 @@ function randomizeLocation() {
   $( "#battleground" ).addClass( "b" + num );
 }
 
-// Uncomment all this to test the fightFunction with two test objects
-
-// let fakePc = {
-//   class: {
-//     healthBonus: -5,
-//     intelligenceBonus: 40,
-//     name: "ninja",
-//     strengthBonus: -30
-//   },
-//   critChance: 0.05,
-//   critDamage: 20,
-//   health: 47,
-//   intelligence: 130,
-//   limbs: ["head", "neck", "arm", "leg", "torso"],
-//   playerName: "Bobo",
-//   skinColor: "grey",
-//   skinColors: ["grey"],
-//   species: {name: "human"},
-//   strength: 60,
-//   toString: function(){
-//     let output = [this.playerName,
-//       ": a ",
-//       this.skinColor,
-//       " skinned ",
-//       this.species.name,
-//       " ",
-//       this.class.name,
-//       " with ",
-//       this.health,
-//       " health. ",
-//       (this.class.magical) ? "Able to cast " : " Wielding a ",
-//       this.weapon.name,
-//       "!"
-//     ].join("");
-//     return output;
-//   },
-//   weapon: {
-//     damage: 14,
-//     name: "sphere",
-//     type: "water"
-//   }
-// };
-
-// let fakeNpc = {
-//   class: {
-//     healthBonus: 55,
-//     name: "thief",
-//     strengthBonus: 30
-//   },
-//   critChance: 0.05,
-//   critDamage: 20,
-//   health: 143,
-//   intelligence: 90,
-//   limbs: ["head", "neck", "arm", "leg", "torso"],
-//   playerName: "Ned Nederlander",
-//   skinColor: "grey",
-//   skinColors: ["grey"],
-//   species: {name: "human"},
-//   strength: 120,
-//   toString: function(){
-//     let output = [this.playerName,
-//       ": a ",
-//       this.skinColor,
-//       " skinned ",
-//       this.species.name,
-//       " ",
-//       this.class.name,
-//       " with ",
-//       this.health,
-//       " health. ",
-//       (this.class.magical) ? "Able to cast " : " Wielding a ",
-//       this.weapon.name,
-//       "!"
-//     ].join("");
-//     return output;
-//   },
-//   weapon: {
-//     damage: 18,
-//     name: "war axe",
-//     hands: 2
-//   }
-// };
-
-// let testArray = [fakePc, fakeNpc];
-
 let fightFuntion = function fight(array) {
 
   // Store current state of player
@@ -139,8 +54,6 @@ $("#attack").click( () => {
   fightFuntion(newArray);
 });
 
-// Run this function to test the fightFunction. This should be called in app.js and passed an array of the two players as the argument. argument is [pc, npc]
 
-// fightFuntion(testArray);
 
 module.exports = fightFuntion;
