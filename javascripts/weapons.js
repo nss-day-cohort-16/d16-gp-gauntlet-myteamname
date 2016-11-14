@@ -56,7 +56,7 @@ Wep.OrcLeg.prototype = new Weapon();
 
 Wep.Zweihander = function() {
   this.name = "zweihander";
-  this.damage = 46;
+  this.damage = 36;
   this.hands = 2;
 };
 Wep.Zweihander.prototype = new Weapon();
@@ -70,7 +70,7 @@ Wep.ShortSword.prototype = new Weapon();
 
 Wep.Excalibur = function() {
   this.name = "excalibur";
-  this.damage = 69;
+  this.damage = 45;
   this.hands = 2;
 };
 Wep.Excalibur.prototype = new Weapon();
